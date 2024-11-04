@@ -1,0 +1,17 @@
+# Dockerfile-seeder
+FROM node:20
+
+# Create work list
+WORKDIR /app
+
+COPY package*.json ./
+
+COPY seeding.json ./
+COPY model/ ./model
+
+RUN npm install
+
+COPY seed.js .
+
+# Excute seed.js
+CMD ["node", "seed.js"]

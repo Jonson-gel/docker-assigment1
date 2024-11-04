@@ -60,4 +60,15 @@
       depends_on:
         - mongodb
     
-    
+    seeder:
+      container_name: seeder
+      build:
+        context: .
+        dockerfile: dockerfile-seeder
+      restart: always
+      environment:
+        MONGODB_URI: mongodb://admin:password@mongodb:27017 
+      networks:
+        - mongodb-network
+      depends_on:
+        - mongodb
