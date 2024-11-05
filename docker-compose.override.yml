@@ -1,0 +1,11 @@
+services:
+  mongodb:
+    volumes:
+      - ./data:/initdb.d
+
+  mongo-express:
+      container_name: express
+      image: mongo-express:1.0-20-alpine3.19
+      restart: always
+      networks:
+        - express-network

@@ -33,8 +33,7 @@
       networks:
         - mongodb-network
         - express-network
-      volumes:
-        - ./data:/data/db 
+      
 
     redis:
       container_name: redis
@@ -59,16 +58,16 @@
         - express-network
       depends_on:
         - mongodb
-    
+
     seeder:
       container_name: seeder
       build:
         context: .
-        dockerfile: dockerfile-seeder
+        dockerfile: Dockerfile-seeder
       restart: always
+      depends_on:
+        - mongodb
       environment:
         MONGODB_URI: mongodb://admin:password@mongodb:27017 
       networks:
         - mongodb-network
-      depends_on:
-        - mongodb

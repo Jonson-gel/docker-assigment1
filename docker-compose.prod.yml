@@ -1,0 +1,8 @@
+services:
+  mongodb:
+    volumes:
+      - ./data:/data/db
+  
+  mongo-express:
+    deploy:
+      replicas: 0
